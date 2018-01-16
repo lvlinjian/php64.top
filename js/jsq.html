@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/nr.css">
+	<script type="text/javascript">
+		function fn(obj) //动态文本框
+		{
+			zhi = obj.innerText;
+			var zhi1 = document.getElementById("d1");
+			var	zhi2 = zhi1.value;
+			zhi1.value = zhi2 + zhi;  
+		}
+		function cz(){ //重置
+			var zhi1 = document.getElementById("d1");
+			zhi1.value ="";  
+		}
+		function tg()//退格
+		{
+			var obj = document.getElementById("d1");
+			var zhi = obj.value;
+			var n = zhi.substring(0,zhi.length-1);
+			obj.value = n ;
+		}
+		function jisuan() //计算
+		{
+			var jieguo;
+			//获取id为d1的值
+			var zhi1 = document.getElementById("d1");
+			var	zhi2 = zhi1.value;
+			var jia = zhi2.lastIndexOf("+");
+			var jian = zhi2.lastIndexOf("-");
+			var cheng = zhi2.lastIndexOf("*");
+			var chu = zhi2.lastIndexOf("/");
+			var quyu = zhi2.lastIndexOf("%");
+			if(jia>0) //加法
+			{
+				var zhi3 = zhi2.substring(0,jia);
+				var zhi4 = zhi2.substring(jia+1);
+				zhi3 = Number(zhi3);
+				zhi4 = Number(zhi4);
+				jieguo = zhi3 + zhi4;
+			}else if(jian>0)//减法
+			{
+				var zhi3 = zhi2.substring(0,jian);
+				var zhi4 = zhi2.substring(jian+1);
+				zhi3 = Number(zhi3);
+				zhi4 = Number(zhi4);
+				jieguo = zhi3 - zhi4;
+			}else if(cheng>0)//乘法
+			{
+				var zhi3 = zhi2.substring(0,cheng);
+				var zhi4 = zhi2.substring(cheng+1);
+				zhi3 = Number(zhi3);
+				zhi4 = Number(zhi4);
+				jieguo = zhi3 * zhi4;
+			}else if(chu>0)//除法
+			{
+				var zhi3 = zhi2.substring(0,chu);
+				var zhi4 = zhi2.substring(chu+1);
+				zhi3 = Number(zhi3);
+				zhi4 = Number(zhi4);
+				jieguo = zhi3 / zhi4;
+			}else if(quyu>0)//取余
+			{
+				var zhi3 = zhi2.substring(0,quyu);
+				var zhi4 = zhi2.substring(quyu+1);
+				zhi3 = Number(zhi3);
+				zhi4 = Number(zhi4);
+				jieguo = zhi3 % zhi4;
+			}
+			zhi1.value =jieguo; //运算的结果
+		}
+	</script>
+	<style type="text/css">
+*{
+	margin: 0;padding: 0;
+}
+body{
+
+}
+.div0{
+	overflow: hidden;
+	margin: 0 auto;
+	background: url(jsq.png) no-repeat; 
+	width: 228px;
+	height: 422px;
+	position: relative;
+}
+table{
+	float: left;
+	position: absolute;
+	top:210px;
+	left:16px;
+	margin: 0 auto;
+}
+table tr td{
+	float: left;
+	line-height: 25px;
+	text-align: center;
+	background: #D9E4F1;
+	width: 32px;
+	margin: 2.6px 3.2px;
+}
+table tr td:hover{
+	box-shadow:1.5px 1.5px 1.5px 1.5px blue;
+}
+table tr td:active{
+	background: red;
+	box-shadow:1.5px 1.5px 1.5px 1.5px red;
+}
+.td1{
+	float: left;
+	position: absolute;
+	top: 163px;
+	width: 69px;
+}
+.td3{
+	float: left;
+	position: absolute;
+	top: 163px;
+	left: 79px;
+}
+.td4{
+	float: left;
+	position: absolute;
+	top: 163px;
+	left: 118px;
+}
+.td2{
+	width: 30px;
+	float: right;
+	height: 56px; 
+}
+.xianshi{
+	width: 176px;
+	height: 40px;
+	float: left;
+	position: absolute;
+	left: 23px;
+	top: 165px;
+}
+#d1{
+	width: 171px;
+	height: 40px;
+	border:none;
+	background: #D9E4F1;
+	text-align: right;
+	padding: 0px 5px;
+	color: blue;
+}
+	</style>
+	<title>网页 - 计算器</title>
+</head>
+<body>
+	<div class="div0">
+		<div class="xianshi"></div>
+		<div class="anniu">
+			<table>
+				<tr>
+					<td>MC</td>
+					<td>MR</td>
+					<td>MS</td>
+					<td>M+</td>
+					<td>M-</td>
+				</tr>
+				<tr>
+					<td onclick="tg()" id="tg">退格</td>
+					<td>CE</td>
+					<td onclick="cz()">重置</td>
+					<td>±</td>
+					<td>√</td>
+				</tr>
+				<tr>
+					<td onclick="fn(this)">7</td>
+					<td onclick="fn(this)">8</td>
+					<td onclick="fn(this)">9</td>
+					<td onclick="fn(this)">/</td>
+					<td onclick="fn(this)">%</td>
+				</tr>
+				<tr>
+					<td onclick="fn(this)">4</td>
+					<td onclick="fn(this)">5</td>
+					<td onclick="fn(this)">6</td>
+					<td onclick="fn(this)">*</td>
+					<td>1/x</td>
+				</tr>
+				<tr>
+					<td onclick="fn(this)">1</td>
+					<td onclick="fn(this)">2</td>
+					<td onclick="fn(this)">3</td>
+					<td onclick="fn(this)">-</td>
+					<td onclick="jisuan()" class="td2" rowspan="2">=</td>
+				</tr>
+				<tr>
+					<td onclick="fn(this)" class="td1" colspan="2">0</td>
+					<td onclick="fn(this)" class="td3">.</td>
+					<td onclick="fn(this)" class="td4">+</td>
+				</tr>
+			</table>
+			<div class="xianshi"><input type="text" id="d1" value=""></div>
+		</div>
+	</div>
+</body>
+</html>
